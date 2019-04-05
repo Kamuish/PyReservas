@@ -7,7 +7,7 @@ from selenium.webdriver.firefox.options import Options
 
 from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException
 
-def main(desired_day, place,hour, sport, email, pwd):
+def main(desired_day, place,hour, sport, email, pwd, time_between_requests = 5):
     """
     Args
     =====
@@ -43,14 +43,16 @@ def main(desired_day, place,hour, sport, email, pwd):
             elem.click()
 
             fill_form(driver,email, pwd, sport)
-            break 
+            print("Completed process with success")
+
+            return 
         except ElementClickInterceptedException as e:
-            print("Already blocked")
+            print("Button already blocked")
             return 
         except NoSuchElementException as e:
-            time.sleep(5)
+            time.sleep(time_between_requests)
+            print("refreshing page")
 
             driver.refresh()
-            print("refreshing page")
 
 main(desired_day = "2019-04-06",place = 1, hour = 1, email = "cdup_email@email.com", pwd = "cdup_pass", ,sport = 'Futsal')
