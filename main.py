@@ -7,7 +7,7 @@ from selenium.webdriver.firefox.options import Options
 
 from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException
 
-def main(desired_day, place,hour, sport, email, pwd, time_between_requests = 5):
+def main(desired_day, place,hour, sport, email, pwd, time_between_requests = 20):
     """
     Args
     =====
